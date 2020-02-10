@@ -11,13 +11,25 @@ let obj = {
     },
     arr: [1,2,3]    
 }
+// 5、改变原数组的方法重写
+let methods = ['push','pop','shift','unshift','reverse','sort','splice']
+// 获取数组原型方法
+let arrProto = Array.prototype
+let newArrProto = Object.create(arrProto)
+methods.forEach(method => {
+    newArrProto[method] = function(){
+        arrProto[method].call(this,...arguments)
+        render()
+    }
+})
 
 // 观察者
 function observer(obj){
     // 先判断数据类型
     // 数组
     if(Array.isArray(obj)){
-
+        obj.__proto__ = newArrProto
+        return;
     }
     // 不是null的对象
     if(typeof obj === 'object' && obj !== null){
@@ -76,3 +88,5 @@ obj.a = 'wzj真帅'
 /* 
 5、数组的特殊处理
 */
+obj.arr.push(4)
+console.log(obj.arr)
