@@ -15,11 +15,10 @@ let obj = {
 let methods = ['push','pop','shift','unshift','reverse','sort','splice']
 // 获取数组原型方法
 let arrProto = Array.prototype
-let newArrProto = Object.create(arrProto)
+let myArrProto = Object.create(arrProto)
 methods.forEach(method => {
-    newArrProto[method] = function(){
+    myArrProto[method] = function(){
         arrProto[method].call(this,...arguments)
-        render()
     }
 })
 
@@ -28,8 +27,8 @@ function observer(obj){
     // 先判断数据类型
     // 数组
     if(Array.isArray(obj)){
-        obj.__proto__ = newArrProto
-        return;
+       obj.__proto__ = myArrProto
+       return
     }
     // 不是null的对象
     if(typeof obj === 'object' && obj !== null){
