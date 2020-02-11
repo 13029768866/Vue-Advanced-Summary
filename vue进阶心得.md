@@ -25,3 +25,7 @@ DOM操作时延迟执行：$nextTick ,并且DOM操作是异步的，存在缓存
 2、类似指令的声明周期，bind,inserted,updated
 
 3、this指向window
+
+## computed
+
+基于Object.defineProperty
