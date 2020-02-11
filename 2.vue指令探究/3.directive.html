@@ -14,7 +14,7 @@
 </style>
 <body>
   <div id="app">
-    <div v-color="'red'">china</div>
+    <div v-bd="'red'">china</div>
     <!-- popover -->
     <div v-click-outside="hide">
       <input 
@@ -29,23 +29,37 @@
       <button>点我</button>
     </div>
     </div>
+    <!-- 自动聚焦 -->
+    <input type="text" v-focus>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
     // 全局指令和局部指令
-    Vue.directive('color',function(el,bindings,vnode){
-      // 全局指令this指向window
-      // console.log(this)
-      el.style.border = `1px solid ${bindings.value}`      
+    Vue.directive('bd',function(el,bindings,vnode){
+      // 自定义指令this指向window
+      console.log(this)
+      console.log(el,bindings,vnode)
+      el.style.border = `1px solid ${bindings.value}`
     })
     let vm = new Vue({
       el:'#app',
       directives:{
+        focus:{
+          bind(el){
+            console.log('el绑定到页面上执行')
+          },
+          inserted(el){
+            el.focus()
+          },
+          updated(){
+
+          }
+        },
         'click-outside'(el,bindings,vnode){
-          document.addEventListener('click',(e)=>{
-            console.log(el,bindings,vnode)
-            if(!el.contains(e.target)){              
-              vnode.context[bindings.expression]()              
+          document.addEventListener('click',function(e){
+            // console.log(el.contains,e.target,vnode)
+            if(!el.contains(e.target)){
+              vnode.context[bindings.expression]()
             }
           })
         }
