@@ -26,6 +26,23 @@ DOM操作时延迟执行：$nextTick ,并且DOM操作是异步的，存在缓存
 
 3、this指向window
 
-## computed
+## computed 和 watch使用场景
 
-基于Object.defineProperty
+1、computed基于Object.defineProperty存在缓存，methods不存在缓存
+
+2、computed 处理基于data的简单事件，比如计算一个值的结果，只能处理同步。
+
+3、watch处理复杂数据变化，比如监听变化需要调用接口。
+
+## vue动画
+
+常见触发操作：v-if v-show v-for 路由切换
+
+css添加动画： animation , transition
+
+js动画：自带钩子  velocity
+
+个数：单个动画，多个动画
+
+一般设置v-enter, v-leave-to, v-enter-active,v-leave,active
+
