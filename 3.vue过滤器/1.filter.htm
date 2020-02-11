@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>过滤器</title>
+</head>
+<body>
+  <div id="app">
+    {{msg | toUpper(3)}}
+    <br>
+    {{msg | lastToUpper(2)}}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // 全局过滤器
+        Vue.filter('toUpper',function(value,count = 1){
+          return value.slice(0,count).toUpperCase() + value.slice(count)
+        })
+        let vm = new Vue({
+            el: '#app',
+            filters:{
+              lastToUpper(value,count){
+                return value.slice(0,count) + value.slice(count).toUpperCase()
+              }
+            },
+            data() {
+                return{                  
+                    msg: 'wzjnb'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
