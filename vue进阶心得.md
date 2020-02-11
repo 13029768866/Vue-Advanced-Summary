@@ -46,3 +46,40 @@ js动画：自带钩子  velocity
 
 一般设置v-enter, v-leave-to, v-enter-active,v-leave,active
 
+使用animate动画库
+
+```js
+<transition
+      enter-active-class="bounceIn"
+      leave-active-class ="bounceOut"
+    >
+        <div 
+          class="box animated"
+          v-show="isShow"
+        >
+          content
+      </div>
+    </transition>
+```
+
+多组动画使用v-if
+
+```js
+<input type="text" v-model="filter">
+     
+    <!-- 多组动画 -->
+    <transition-group
+      enter-active-class = "bounceIn"
+      leave-active-class = "bounceOut"
+    >
+      <div 
+        class="box animate"
+        v-for="item in computedDataList"
+        :key ="item.title"
+        v-if="isShow"
+      >
+        {{item.title}}
+      </div>
+    </transition-group>
+```
+
