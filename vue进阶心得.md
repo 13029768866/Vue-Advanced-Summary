@@ -106,8 +106,22 @@ js动画：自带钩子  velocity
 接受所有没被使用的传参
 
 ```
-v-bind="$attrs"
+绑定属性 v-bind="$attrs"
 
 inheritAttrs:false // 不在dom上显示传递的属性
+```
+
+#### $listeners 和 $emit
+
+```js
+绑定事件 v-on= "$listeners"
+1、修饰符native，相当于原生的给模板的最外层元素添加事件
+<my-button @click.native="show"></my-button>
+
+2、子组件调用父组件的方法$listeners
+template: `<div><button v-on=$listeners>点我呀</button></div>`
+
+3、$emit向上派发（发布订阅）
+template: `<div><button @click="$emit('click')">点我呀</button></div>`
 ```
 
