@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div>{{msg}}</div>
+    <my-input :msg.sync="msg"></my-input>
+    <br>
+    <my-input v-model="msg"></my-input>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+       
+       Vue.component('my-input',{
+         props: ['msg'],
+         template: `<input :value="msg" @input="change"/>`,
+         methods:{
+           change(e){
+            //  sync语法糖
+             this.$emit('update:msg',e.target.value)
+            // v-model语法糖
+            this.$emit('input',e.target.value)
+           }
+         }
+       })
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return{                  
+                    msg: 'wzjnb'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
