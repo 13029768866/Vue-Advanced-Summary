@@ -32,7 +32,7 @@ DOM操作时延迟执行：$nextTick ,并且DOM操作是异步的，存在缓存
 
 2、computed 处理基于data的简单事件，比如计算一个值的结果，只能处理同步。
 
-3、watch处理复杂数据变化，比如监听变化需要调用接口。
+3、watch基于$watch处理复杂数据变化，比如监听变化需要调用接口。
 
 ## vue动画
 
@@ -125,3 +125,13 @@ template: `<div><button v-on=$listeners>点我呀</button></div>`
 template: `<div><button @click="$emit('click')">点我呀</button></div>`
 ```
 
+## 相关问题总结
+
+### 1.MVC和MVVM区别
+
+传统MVC中逻辑大量放在control中，导致control复杂且难以维护
+MVVM中view和model没有直接的关系，通过VM进行交互
+
+## 2.vue中key的作用
+
+静态展示可以使用索引当key，如果有设计数组操作，选择唯一标识作为key值
