@@ -7,7 +7,9 @@
 </head>
 <body>
   <div id="app">
-    {{fullName}}
+    全选:  <input type="checkbox" v-model="checkAll">
+    <br>
+    反选: <input type="checkbox" v-for="check in checks" v-model="check.value">
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
@@ -18,8 +20,26 @@
                 return{                  
                     firstName: 'W',
                     lastName: 'zj',
-                    fullName:''
+                    fullName:'',
+                    checks:[
+                      {value: true},
+                      {value: false},
+                      {value: true}
+                    ]
                 }
+            },
+            computed:{
+              // 计算属性实现全选反选功能
+              checkAll:{
+                get(){
+                  return this.checks.every(check => check.value)
+                },
+                set(newVal){
+                  this.checks.forEach(check => {
+                    check.value = newVal
+                  });
+                }                
+              }
             },
             // computed: {
             //   /* getName(){

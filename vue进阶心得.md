@@ -32,7 +32,7 @@ DOM操作时延迟执行：$nextTick ,并且DOM操作是异步的，存在缓存
 
 2、computed 处理基于data的简单事件，比如计算一个值的结果，只能处理同步。
 
-3、watch基于$watch处理复杂数据变化，比如监听变化需要调用接口。
+3、watch基于$watch处理复杂数据变化，比如监听变化需要调用接口。(immediate立即执行，deep深度监控，lazy:true 就是computed实现)
 
 ## vue动画
 
