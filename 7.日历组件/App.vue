@@ -1,6 +1,6 @@
 <template>
     <div>
-    <DatePicker :value="now"></DatePicker>
+    <DatePicker v-model="now"></DatePicker>
 </div>
 </template>
 <script>

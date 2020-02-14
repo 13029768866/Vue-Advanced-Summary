@@ -17,12 +17,20 @@
                 <span>&gt;</span>
             </div>
             <div class="pannel-content">
+                <span
+                    v-for="weekday in weekDays"
+                    :key = "weekday"
+                    class="cell"
+                >
+                    {{weekday}}
+                </span>
                 <div class="days">
                     <div v-for="i in 6" :key="i">
                         <span
                             v-for="j in 7"
                             :key="j"
                             class="cell"
+                            @click="chooseDate(visibeDays[(i - 1) * 7 + (j - 1)])"
                             :class="[
                             {
                                 notCurrentMonth: !isCurrentMonth(visibeDays[(i - 1) * 7 + (j - 1)])
@@ -84,6 +92,7 @@
         },
         data(){
             return {
+                weekDays: ['日','一','二','三','四','五','六'],
                 isVisible: true
             }
         },
@@ -103,6 +112,10 @@
                 let {year,month,day} = utils.getYearMonthDay(this.value)
                 let {year: y, month: m,day: d} = utils.getYearMonthDay(date)
                 return year === y && month === m && day === d
+            },
+            chooseDate(date){
+                this.$emit('input',date)
+                this.blur()
             }
         },
         mounted(){
@@ -152,12 +165,16 @@
             user-select none
     .pannel-content
         .cell
+            box-sizing border-box
             display inline-flex
             justify-content: center;
             align-items center
             width: 32px
             height: 32px
             font-weight: 700
+            cursor pointer
+            &:hover
+                border: 1px solid skyblue
     .pannel-footer
         height: 30px
         text-align: center;
