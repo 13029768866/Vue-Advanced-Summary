@@ -7,21 +7,39 @@
 </head>
 <body>
   <div id="app">
-   
+    <son></son>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
+        Vue.component('son',{
+          template:`<div>son</div>`,
+          beforeCreate() {
+            console.log('子组件beforeCreated');
+          },
+          created() {
+            console.log('子组件created');
+          },
+          beforeMount() {
+            console.log('子组件beforeMount');
+          },
+          mounted() {
+            console.log('子组件mounted');
+          }
+        })
        
         let vm = new Vue({
             el:'#app',
             beforeCreate(){
               // 初始化自己的生命周期，事件方法
               console.log(this)
+              console.log('beforeCreated');
             },
             created(){
               // 响应式数据劫持,没有this.$el，无法获取真实dom元素
+              console.log('created');
             },
             render(createElement){
+              console.log(1);
               return createElement('div',{
                 attrs:{
                   id: 1
@@ -33,6 +51,7 @@
               console.log('beforeMount')
             },
             mounted(){
+              console.log('mounted');
               // 这里可以获取真实的dom元素
             }        
         })
