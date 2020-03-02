@@ -13,4 +13,4 @@ let vm = new Vue({
     }
   }
 })
-console.log(vm)
+console.log(vm.arr.push(123),vm.arr)
