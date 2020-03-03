@@ -1,5 +1,5 @@
 import { observe } from './index'
-import { vueArrayProto } from './array'
+import { vueArrayProto,observeArray } from './array'
 
 export function defineReactive(data,key,value){
   observe(value)
@@ -9,6 +9,7 @@ export function defineReactive(data,key,value){
     },
     set(newValue){
       if(newValue === value) return
+      observe(newValue)
       value = newValue
     }
   })
@@ -18,6 +19,7 @@ class Observer{
   constructor(data){
    if(Array.isArray(data)){
     data.__proto__ = vueArrayProto
+    observeArray(data)
    }else{
     this.walk(data)
    }

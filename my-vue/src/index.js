@@ -9,8 +9,7 @@ let vm = new Vue({
         name: 'wzj',
         age: 18
       },
-      arr: [1,2,3]
+      arr: [{a:1},2,3]
     }
   }
 })
-console.log(vm.arr.push(123),vm.arr)
