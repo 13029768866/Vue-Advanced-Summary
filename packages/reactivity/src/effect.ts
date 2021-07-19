@@ -3,7 +3,7 @@ export function effect(fn, options: any = {}) {
   const effect = createReactiveEffect(fn, options);
 
   if (!options.lazy) {
-    effect(); // 默认先执行一次
+    effect(); //  默认先触发执行一次
   }
 
   return effect;
