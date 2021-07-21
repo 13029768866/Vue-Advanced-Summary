@@ -1,16 +1,16 @@
 export function effect(fn, options: any = {}) {
-  // 响应式，数据变化重新执行
+  //  响应式，数据变化重新执行
   const effect = createReactiveEffect(fn, options);
 
   if (!options.lazy) {
-    effect(); //  默认先触发执行一次
+    effect(); //   默认先触发执行一次
   }
 
   return effect;
 }
 
 let uid = 0;
-let activeEffect; // 存储当前的effect
+let activeEffect; //  存储当前的effect
 const effectStack = []; // 解决effect嵌套问题
 function createReactiveEffect(fn, options) {
   const effect = function reactiveEffect() {
