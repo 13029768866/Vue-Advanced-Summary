@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../node_modules/@vue/reactivity/dist/reactivity.global.js"></script>
+    <script>
+        let { reactive, shallowReactive, readonly, shallowReadonly } = VueReactivity;
+        let state = {
+            name: 'wzj',
+            age: {
+                forever: 18
+            }
+        }
+        // 深度代理
+        /* let reactiveState = reactive(state)
+        console.log(reactiveState);
+        console.log(reactiveState.age) */
+
+        // 浅层代理
+        /* let reactiveState = shallowReactive(state)
+        console.log(reactiveState);
+        console.log(reactiveState.age) */
+
+        // 深度只读
+        /* let reactiveState = readonly(state)
+        reactiveState.age.what = '?' */
+        
+        // 浅层只读
+        /* let reactiveState = shallowReadonly(state)
+        reactiveState.age.what = '?'
+        console.log(reactiveState);
+        reactiveState.what = "??"; */
+    </script>
+</body>
+</html>
