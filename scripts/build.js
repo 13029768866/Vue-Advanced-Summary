@@ -26,7 +26,7 @@ async function build(target){
  * @param targets 目标文件
  * @param iteratorFn   对应打包方法
  */
-function runParallerl(targets, iteratorFn){
+function runParallel(targets, iteratorFn){
   const res = []
   for(const item of targets){
     const p = iteratorFn(item)
@@ -35,4 +35,4 @@ function runParallerl(targets, iteratorFn){
   return Promise.all(res)
 }
 
-runParallerl(targets,build)
+runParallel(targets,build)
