@@ -59,3 +59,20 @@
 2. `buildOptions` 自定义打包配置项
 3. `sripts` 配置脚本，`dev`单个模块打包，`build`全局模块打包
 
+### 2、scripts
+
+#### 2.1、build.js
+
+1. 获取目标文件--targets
+2. 打包方法--build
+3. 执行并行打包方法 --runParallel
+
+### 2.2、rollup配置
+
+1. 获取每个包的pkg中自定义打包方式
+2. 根据映射表outputConfig创建对应打包文件---createConfig
+
+
+
+
+
