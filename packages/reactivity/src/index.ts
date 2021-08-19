@@ -1,6 +1,6 @@
-import shared from '@vue/shared';
-const Reactivity = {
-
-}
-
-export { Reactivity }
+import {
+    reactive,
+    shallowReactive,
+    readonly,
+    shallowReadonly
+} from "./reactive";

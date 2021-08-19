@@ -1,5 +1,1 @@
-const shared = {
-
-}
-
-export { shared }
+const isObject = (value) => typeof value === 'object' && value !== null;
