@@ -1,22 +1,24 @@
-import { isObject } from '@vue/shared'
-const mutableHandlers = {};
-const shallowReactiveHandlers = {};
-const readonlyHandlers = {};
-const shallowReadonlyHandlers = {};
+import {isObject} from '@vue/shared';
+import {
+    mutableHandlers,
+    shallowReactiveHandlers,
+    readonlyHandlers,
+    shallowReadonlyHandlers
+} from "./baseHandler";
 
-export function reactive(target){
+export function reactive(target) {
     return createReactiveObject(target, false, mutableHandlers);
 }
 
-export function shallowReactive(target){
+export function shallowReactive(target) {
     return createReactiveObject(target, false, shallowReactiveHandlers);
 }
 
-export function readonly(target){
+export function readonly(target) {
     return createReactiveObject(target, true, readonlyHandlers);
 }
 
-export function shallowReadonly(target){
+export function shallowReadonly(target) {
     return createReactiveObject(target, true, shallowReadonlyHandlers);
 }
 
@@ -32,17 +34,17 @@ const readonlyMap = new WeakMap();
  * @param baseHandler   对应的处理器，添加getter，setter
  * @return 代理后的对象
  */
-export function createReactiveObject(target, isReadonly, baseHandler){
+export function createReactiveObject(target, isReadonly, baseHandler) {
     // Proxy用于创建一个对象的代理, 不是对象就没法拦截了
-    if(isObject(target)){
+    if (!isObject(target)) {
         return target;
     }
     // 根据是否只读创建代理映射缓存
-    const proxyMap = isReadonly? readonlyMap: reactiviveMap;
+    const proxyMap = isReadonly ? readonlyMap : reactiviveMap;
 
     // 防止重复代理
     const existProxy = proxyMap.get(target);
-    if(existProxy){
+    if (existProxy) {
         return existProxy;
     }
 

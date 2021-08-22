@@ -1,4 +1,4 @@
-import {
+export {
     reactive,
     shallowReactive,
     readonly,

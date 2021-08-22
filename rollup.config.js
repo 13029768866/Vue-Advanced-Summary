@@ -40,7 +40,7 @@ const options = pkg.buildOptions
  */
 function createConfig(format, output){
   output.name = options.name;
-  // output.sourcemap = true;
+  output.sourcemap = true;
   // 生成rollup配置
   return {
     input: resolve('src/index.ts'),

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test</title>
+</head>
+<body>
+<script src="../node_modules/@vue/reactivity/dist/reactivity.global.js"></script>
+<script>
+    let { reactive, shallowReactive, readonly, shallowReadonly } = VueReactivity
+    let obj = {
+        name: 'wzj',
+        dream: {
+            first: 'love and peace'
+        }
+    }
+    // const reactiveObj = reactive(obj);
+    // console.log(reactiveObj.dream);
+
+    // const shallowReactiveObj = shallowReactive(obj);
+    // console.log(shallowReactiveObj.dream);
+
+    // const readonlyObj = readonly(obj);
+    // readonlyObj.name = 'wzj is so cool';
+    // readonlyObj.dream.first = 'money money money';
+
+    const shallowReadonlyObj = shallowReadonly(obj);
+    shallowReadonlyObj.name = 'wzj is so cool';
+    shallowReadonlyObj.dream.first = 'money money money';
+</script>
+</body>
+</html>
