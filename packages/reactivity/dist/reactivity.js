@@ -32,10 +32,26 @@ function reactive(target) {
 }
 
 // packages/reactivity/src/effect.ts
-function effect() {
+var activeEffect = void 0;
+var ReactiveEffect = class {
+  constructor(fn) {
+    this.fn = fn;
+  }
+  run() {
+    console.log("this\u4F5C\u7528\u57DF", this);
+    activeEffect = this;
+    return this.fn();
+  }
+};
+function effect(fn) {
+  const _effect = new ReactiveEffect(fn);
+  console.log("effect~~", _effect);
+  _effect.run();
 }
 export {
+  ReactiveEffect,
   ReactiveFlags,
+  activeEffect,
   effect,
   reactive
 };
