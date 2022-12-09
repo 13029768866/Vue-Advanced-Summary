@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my-reactivity测试</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="module">
+        import { reactive } from './reactivity.js';
+        const obj = { name: 'wzj', age: 28 };
+        // 1、同一个对象代理两次
+        const state1 = reactive(obj);
+        const state2 = reactive(obj);
+        console.log('同一个对象代理两次~~',state1 === state2);
+
+        // 2、对象代理后再次代理
+        const state3 = reactive(obj);
+        const state4 = reactive(state3);
+        console.log('对象代理后再次代理~~',state3 === state4);
+
+    </script>
+</body>
+</html>
